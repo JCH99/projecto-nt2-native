@@ -36,6 +36,8 @@ const Home = () => {
     <View style={styles.container}>
       <Text>Ofertas destacadas</Text>
       <Destacados data={data} />
+      {/*search bar / filter / select moneda*/}
+      {/*flatlist productos*/}
     </View>
   );
 };
