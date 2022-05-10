@@ -31,11 +31,11 @@ const AppNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Perfil"
+        name="Historial"
         component={TEST}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="history" color={color} size={size} />
           ),
         }}
       />

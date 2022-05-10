@@ -1,22 +1,18 @@
 import * as React from "react";
-import { Text, View, SafeAreaView } from "react-native";
+import { Text, View, StyleSheet, ImageBackground } from "react-native";
 
 import Carousel from "react-native-snap-carousel";
 import { Dimensions } from "react-native";
 
-const Destacado = ({ item, index }) => {
+const Combo = ({ item, index }) => {
   return (
-    <View
-      style={{
-        backgroundColor: "floralwhite",
-        borderRadius: 5,
-        height: 200,
-        padding: 50,
-      }}
+    <ImageBackground
+      source={{ uri: item.img }}
+      resizeMode="cover"
+      style={styles.image}
     >
-      <Text style={{ fontSize: 30 }}>{item.title}</Text>
-      <Text>{item.text}</Text>
-    </View>
+      <Text style={styles.title}>{item.title}</Text>
+    </ImageBackground>
   );
 };
 
@@ -31,9 +27,29 @@ const Destacados = (props) => {
       data={props.data}
       sliderWidth={windowWidth}
       itemWidth={200}
-      renderItem={Destacado}
+      renderItem={Combo}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    borderRadius: 10,
+    height: 200,
+    overflow: "hidden",
+    display: "flex",
+
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 24,
+    color: "#ffffff",
+    fontWeight: "600",
+    backgroundColor: "rgba(0,0,0,.7)",
+    padding: 6,
+    width: 200,
+  },
+});
 
 export default Destacados;
