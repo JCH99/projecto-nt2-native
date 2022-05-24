@@ -1,12 +1,37 @@
 import React from "react";
-
-const ProductoList = () => {
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import CardProducto from "./CardProducto";
+{
+  /*search bar / filter / select moneda*/
+}
+const ProductoList = (props) => {
   return (
-    <div>
-      <Text>Productos</Text>
-    </div>
+    <FlatList
+      styles={styles.listContainer}
+      data={props.data}
+      renderItem={(producto) => (
+        <CardProducto
+          style={styles.listItem}
+          data={producto}
+          keyExtractor={(item) => item.id}
+        />
+      )}
+      // keyExtractor={(item) => data.indexOf(item)}
+      numColumns={2}
+    />
   );
 };
+
+const styles = StyleSheet.create({
+  listContainer: {
+    // paddingHorizontal: 5,
+    // paddingVertical: 10,
+  },
+  listItem: {
+    // width: "100%",
+    // padding: 20,
+  },
+});
 
 // const Carrito = () => {
 //   return <CardProducto data={data}></CardProducto>;

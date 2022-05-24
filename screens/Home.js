@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Destacados from "../components/Home/Destacados";
-import CardProducto from "../components/Home/CardProducto";
-
+import ProductoList from "../components/Home/ProductoList";
 // 1. ofertas destacadas -- carousel
 // 2. lista completa productos
 //2.1 title
@@ -11,22 +10,27 @@ import CardProducto from "../components/Home/CardProducto";
 
 const data = [
   {
+    id: 1,
     title: "combo papitas con birra",
     img: "https://images.unsplash.com/photo-1604307078172-9b46710cc5af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1101&q=80",
   },
   {
+    id: 2,
     title: "combo 2",
     img: "https://images.unsplash.com/photo-1627935722051-395636b0d8a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80",
   },
   {
+    id: 3,
     title: "combo 3",
     img: "https://images.unsplash.com/photo-1604634077336-1429372af4be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
   },
   {
+    id: 4,
     title: "combo 4",
     img: "https://images.unsplash.com/photo-1600891965483-0a429ebf9076?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1082&q=80",
   },
   {
+    id: 5,
     title: "combo 5",
     img: "https://images.unsplash.com/photo-1561668048-fe9c092832e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
   },
@@ -35,20 +39,11 @@ const data = [
 const Home = () => {
   return (
     <View style={styles.container}>
-      <Text>Ofertas destacadas</Text>
+      <Text style={styles.header}>Ofertas destacadas</Text>
       <Destacados data={data} />
-      {/*search bar / filter / select moneda*/}
-      {/*flatlist productos*/}
-      <Text style={styles.title}>Productos</Text>
-      <FlatList
-        styles={styles.listContainer}
-        data={data}
-        renderItem={(producto) => (
-          <CardProducto style={styles.listItem} data={producto} />
-        )}
-        // keyExtractor={(item) => data.indexOf(item)}
-        numColumns={2}
-      />
+
+      <Text style={styles.header}>Productos</Text>
+      <ProductoList data={data} />
     </View>
   );
 };
@@ -59,20 +54,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  // title: {
-  //   textAlign: "center",
-  //   fontWeight: "bold",
-  //   fontSize: 25,
-  //   color: "teal",
-  //   marginBottom: "10%",
-  // },
-  listContainer: {
-    paddingHorizontal: 5,
-    paddingVertical: 10,
+
+  header: {
+    fontSize: 24,
+    marginBottom: 16,
+    fontWeight: "700",
   },
-  listItem: {
-    width: "100%",
-    padding: 20,
+
+  section: {
+    marginBottom: 48,
   },
 });
 
