@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import Destacados from "../components/Home/Destacados";
+import CardProducto from "../components/Home/CardProducto";
 
 // 1. ofertas destacadas -- carousel
 // 2. lista completa productos
@@ -38,6 +39,16 @@ const Home = () => {
       <Destacados data={data} />
       {/*search bar / filter / select moneda*/}
       {/*flatlist productos*/}
+      <Text style={styles.title}>Productos</Text>
+      <FlatList
+        styles={styles.listContainer}
+        data={data}
+        renderItem={(producto) => (
+          <CardProducto style={styles.listItem} data={producto} />
+        )}
+        // keyExtractor={(item) => data.indexOf(item)}
+        numColumns={2}
+      />
     </View>
   );
 };
@@ -47,6 +58,21 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  // title: {
+  //   textAlign: "center",
+  //   fontWeight: "bold",
+  //   fontSize: 25,
+  //   color: "teal",
+  //   marginBottom: "10%",
+  // },
+  listContainer: {
+    paddingHorizontal: 5,
+    paddingVertical: 10,
+  },
+  listItem: {
+    width: "100%",
+    padding: 20,
   },
 });
 

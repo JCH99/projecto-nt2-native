@@ -3,10 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Home from "./screens/Home";
+import Card from "./components/Home/CardProducto";
+import Carrito from "./screens/Carrito";
 const Tab = createBottomTabNavigator();
 
 const TEST = () => {
-  return <Text>OLA</Text>;
+  return <Card></Card>;
 };
 
 const AppNavigator = () => {
@@ -23,7 +25,7 @@ const AppNavigator = () => {
       />
       <Tab.Screen
         name="Carrito"
-        component={TEST}
+        component={Carrito}
         options={{
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons name="cart" color={color} size={size} />
