@@ -17,7 +17,7 @@ const ProductoList = (props) => {
         />
       )}
       // keyExtractor={(item) => data.indexOf(item)}
-      numColumns={2}
+      numColumns={1}
     />
   );
 };

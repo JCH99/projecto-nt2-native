@@ -18,7 +18,6 @@ const Combo = ({ item, index }) => {
 
 const Destacados = (props) => {
   const windowWidth = Dimensions.get("window").width;
-  console.log(windowWidth);
   return (
     <Carousel
       loop

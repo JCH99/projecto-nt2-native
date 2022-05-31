@@ -1,8 +1,6 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
-// import { Card, ListItem, Button, Icon } from "react-native-elements";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
-import { Home } from "../../screens/Home/";
+import { Card, Paragraph } from "react-native-paper";
+import { Button } from "../Buttons/Button";
 
 // ***********VER FUNCIONALIDAD BOTONES************
 const CardProducto = ({ data }) => {
@@ -13,13 +11,22 @@ const CardProducto = ({ data }) => {
       <Card.Content>
         <Card.Cover source={{ uri: data.item.img }} />
         <Paragraph>
-          Las mas mas mas mejores.djjdjd hjdhkajdhakDJAlkdjaaDJALKdjadja
-          jahdAJDHAjdbajdhaDHAdjakdj.
+          Las mas mas mas mejores.
         </Paragraph>
       </Card.Content>
       <Card.Actions>
-        <Button onPress={Home}>No me gustan las papash</Button>
-        <Button onPress={Home}>Comprar</Button>
+      <Button
+        onPress={()=>{}}
+        title="Comprar"
+        disabled
+        inverted
+      />
+      <Button
+        onPress={()=>{}}
+        title="No me gustan las papash"
+        disabled
+        inverted
+      />
       </Card.Actions>
     </Card>
   );
