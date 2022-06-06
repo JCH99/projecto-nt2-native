@@ -2,16 +2,16 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Home from "./screens/Home";
-import Card from "./components/Home/CardProducto";
-import Carrito from "./screens/Carrito";
+import Home from "../screens/Home";
+import Card from "../components/Home/CardProducto";
+import Carrito from "../screens/Carrito";
 const Tab = createBottomTabNavigator();
 
 const TEST = () => {
   return <Card></Card>;
 };
 
-const AppNavigator = () => {
+const TabNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -45,4 +45,4 @@ const AppNavigator = () => {
   );
 };
 
-export default AppNavigator;
+export default TabNavigator;
