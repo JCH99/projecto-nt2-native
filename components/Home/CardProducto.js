@@ -1,7 +1,5 @@
 import React from "react";
 import { Card, Paragraph } from "react-native-paper";
-import { Button } from "../Buttons/Button";
-
 // ***********VER FUNCIONALIDAD BOTONES************
 const CardProducto = ({ data }) => {
   // console.log(data);
@@ -10,24 +8,9 @@ const CardProducto = ({ data }) => {
       <Card.Title title={data.item.title} subtitle="Las mejores" />
       <Card.Content>
         <Card.Cover source={{ uri: data.item.img }} />
-        <Paragraph>
-          Las mas mas mas mejores.
-        </Paragraph>
+        <Paragraph>Las mas mas mas mejores.</Paragraph>
       </Card.Content>
-      <Card.Actions>
-      <Button
-        onPress={()=>{}}
-        title="Comprar"
-        disabled
-        inverted
-      />
-      <Button
-        onPress={()=>{}}
-        title="No me gustan las papash"
-        disabled
-        inverted
-      />
-      </Card.Actions>
+      <Card.Actions></Card.Actions>
     </Card>
   );
 };
