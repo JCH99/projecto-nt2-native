@@ -8,13 +8,13 @@ const CardProducto = ({ data }) => {
   // console.log(data);
   return (
     <Card>
-      <Card.Title title={data.item.titulo} subtitle="Las mejores" />
+      <Card.Title title={data.item.titulo} subtitle={data.item.tipo} />
       <Card.Content>
         <Card.Cover source={{ uri: data.item.img }} />
-        <Paragraph>Las mas mas mas mejores.</Paragraph>
+        <Paragraph>{data.item.descripcion}</Paragraph>
       </Card.Content>
       <Card.Actions>
-        <RnIncrementDecrementBtn minVal={0} minreq={3} max={10} val={3} />
+        <RnIncrementDecrementBtn minVal={0} minreq={3} max={10} val={data.item.stock} />
       <Button
         onPress={()=>{}}
         title="Comprar"

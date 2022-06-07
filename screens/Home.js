@@ -9,7 +9,7 @@ import { getProductos } from "../services/productosApi";
 //2.2 filter bebidas picadas
 //2.3 flatlist
 
-const data = [
+{/*const data = [
   {
     id: 1,
     title: "combo papitas con birra",
@@ -35,23 +35,26 @@ const data = [
     title: "combo 5",
     img: "https://images.unsplash.com/photo-1561668048-fe9c092832e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
   },
-];
+];*/}
 
 const Home = () => {
-  const [productos, setProductos] = useState([]);
+  const [productosList, setProductos] = useState([]);
 
   useEffect(async () => {
     const list = await getProductos();
-    setProductos(list);
+    const productosList = [];
+    list.map((item) => productosList.push(item));
+    console.log(productosList)
+    setProductos(productosList);
   }, []);
-console.log(productos);
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Ofertas destacadas</Text>
-      <Destacados data={productos} />
+      <Destacados data={productosList} />
 
       <Text style={styles.header}>Productos</Text>
-      <ProductoList data={productos} />
+      <ProductoList data={productosList} />
     </View>
   );
 };
