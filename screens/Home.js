@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Destacados from "../components/Home/Destacados";
 import ProductoList from "../components/Home/ProductoList";
+import { getProductos } from "../services/productosApi";
 // 1. ofertas destacadas -- carousel
 // 2. lista completa productos
 //2.1 title
@@ -37,13 +38,20 @@ const data = [
 ];
 
 const Home = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(async () => {
+    const list = await getProductos();
+    setProductos(list);
+  }, []);
+console.log(productos);
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Ofertas destacadas</Text>
-      <Destacados data={data} />
+      <Destacados data={productos} />
 
       <Text style={styles.header}>Productos</Text>
-      <ProductoList data={data} />
+      <ProductoList data={productos} />
     </View>
   );
 };

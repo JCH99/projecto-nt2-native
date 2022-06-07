@@ -13,7 +13,7 @@ const ProductoList = (props) => {
         <CardProducto
           style={styles.listItem}
           data={producto}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item._id}
         />
       )}
       // keyExtractor={(item) => data.indexOf(item)}

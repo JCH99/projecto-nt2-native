@@ -8,7 +8,7 @@ const CardProducto = ({ data }) => {
   // console.log(data);
   return (
     <Card>
-      <Card.Title title={data.item.title} subtitle="Las mejores" />
+      <Card.Title title={data.item.titulo} subtitle="Las mejores" />
       <Card.Content>
         <Card.Cover source={{ uri: data.item.img }} />
         <Paragraph>Las mas mas mas mejores.</Paragraph>
