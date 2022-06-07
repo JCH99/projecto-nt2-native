@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Paragraph } from "react-native-paper";
 import { Button } from "../Buttons/Button";
+import RnIncrementDecrementBtn from "./IncrementDecrementButton";
 
 // ***********VER FUNCIONALIDAD BOTONES************
 const CardProducto = ({ data }) => {
@@ -15,6 +16,7 @@ const CardProducto = ({ data }) => {
         </Paragraph>
       </Card.Content>
       <Card.Actions>
+        <RnIncrementDecrementBtn minVal={0} minreq={3} max={10} val={3} />
       <Button
         onPress={()=>{}}
         title="Comprar"

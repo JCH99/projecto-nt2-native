@@ -1,18 +1,23 @@
-import * as React from "react";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
-
+import React, { useState } from "react";
+import { 
+  Text,
+  View,
+  StyleSheet,
+  ImageBackground,
+  Dimensions} from "react-native";
 import Carousel from "react-native-snap-carousel";
-import { Dimensions } from "react-native";
 
 const Combo = ({ item, index }) => {
   return (
-    <ImageBackground
-      source={{ uri: item.img }}
-      resizeMode="cover"
-      style={styles.image}
-    >
-      <Text style={styles.title}>{item.title}</Text>
-    </ImageBackground>
+    <View>
+        <ImageBackground
+          source={{ uri: item.img }}
+          resizeMode="cover"
+          style={styles.image}
+        >
+          <Text style={styles.title}>{item.title}</Text>
+        </ImageBackground>
+    </View>
   );
 };
 
@@ -48,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,.7)",
     padding: 6,
     width: 200,
-  },
+  }
 });
 
 export default Destacados;
