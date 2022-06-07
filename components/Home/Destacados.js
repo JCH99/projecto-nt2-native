@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { 
   Text,
   View,
@@ -17,7 +17,7 @@ const Combo = ({ item, index }) => {
         >
           <Text style={styles.title}>{item.title}</Text>
         </ImageBackground>
-    </View>
+    </View>  
   );
 };
 

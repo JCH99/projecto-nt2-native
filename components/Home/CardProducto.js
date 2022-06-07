@@ -11,9 +11,7 @@ const CardProducto = ({ data }) => {
       <Card.Title title={data.item.title} subtitle="Las mejores" />
       <Card.Content>
         <Card.Cover source={{ uri: data.item.img }} />
-        <Paragraph>
-          Las mas mas mas mejores.
-        </Paragraph>
+        <Paragraph>Las mas mas mas mejores.</Paragraph>
       </Card.Content>
       <Card.Actions>
         <RnIncrementDecrementBtn minVal={0} minreq={3} max={10} val={3} />
