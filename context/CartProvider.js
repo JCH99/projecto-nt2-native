@@ -23,29 +23,31 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD_ONE") {
-    const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.amount;
+    const updatedAmount = state.total + action.item.precio;
 
+    //Check si existe en el carrito
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
     );
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
 
+    //Si es un item que ya estaba en el carrito suma 1 a la cantidad
     if (existingCartItem) {
       const updatedItem = {
         ...existingCartItem,
-        amount: existingCartItem.amount + action.item.amount,
+        amount: existingCartItem.amount + 1,
       };
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
     } else {
       updatedItems = state.items.concat(action.item);
     }
+    //Si no lo agrega como nuevo item
 
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount,
+      total: updatedAmount,
     };
   }
   if (action.type === "REMOVE_ONE") {
@@ -53,8 +55,10 @@ const cartReducer = (state, action) => {
       (item) => item.id === action.id
     );
     const existingItem = state.items[existingCartItemIndex];
-    const updatedTotalAmount = state.totalAmount - existingItem.price;
+    const updatedAmount = state.total - existingItem.price;
     let updatedItems;
+
+    //Si solo habia 1, elimina el producto del carrito
     if (existingItem.amount === 1) {
       updatedItems = state.items.filter((item) => item.id !== action.id);
     } else {
@@ -62,10 +66,11 @@ const cartReducer = (state, action) => {
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
     }
+    //Si no simplemente le resta uno a la cantidad seleccionada
 
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount,
+      total: updatedAmount,
     };
   }
 
