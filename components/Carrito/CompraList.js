@@ -1,16 +1,14 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-import CardProducto from "./CardProducto";
-{
-  /*search bar / filter */
-}
-const ProductoList = (props) => {
+import CardProdCompra from "./CardProdCompra";
+
+const CompraList = (props) => {
   return (
     <FlatList
       styles={styles.listContainer}
       data={props.data}
       renderItem={(producto) => (
-        <CardProducto
+        <CardProdCompra
           style={styles.listItem}
           data={producto}
           keyExtractor={(item) => item._id}
@@ -37,6 +35,6 @@ const styles = StyleSheet.create({
 //   return <CardProducto data={data}></CardProducto>;
 // };
 
-export default ProductoList;
+export default CompraList;
 
 //id, titulo, imagen, desc, precio, tipo

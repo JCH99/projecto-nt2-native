@@ -6,10 +6,9 @@ import { useReducer } from "react";
 //     titulo: String,
 //     cantidad: int,
 //     precioUnitario,
-//     precioTotal,
 // }
 
-const CartContext = React.createContext({
+export const CartContext = React.createContext({
   items: [],
   total: 0,
   addOne: (item) => {},
@@ -54,6 +53,7 @@ const cartReducer = (state, action) => {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id
     );
+    if(existingCartItemIndex !== -1){
     const existingItem = state.items[existingCartItemIndex];
     const updatedAmount = state.total - existingItem.price;
     let updatedItems;
@@ -72,6 +72,12 @@ const cartReducer = (state, action) => {
       items: updatedItems,
       total: updatedAmount,
     };
+    }else{
+      return {
+        items: state.items,
+        total: state.updatedAmount,
+      };
+    }
   }
 
   return defaultCartState;

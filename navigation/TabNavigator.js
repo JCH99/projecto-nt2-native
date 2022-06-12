@@ -3,8 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Home from "../screens/Home";
-import Card from "../components/Home/CardProducto";
 import Carrito from "../screens/Carrito";
+import Historial from "../screens/Historial";
+import Card from "../components/Home/CardProducto";
+
 const Tab = createBottomTabNavigator();
 
 const TEST = () => {
@@ -34,7 +36,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Historial"
-        component={TEST}
+        component={Historial}
         options={{
           tabBarIcon: ({ size, color }) => (
             <MaterialCommunityIcons name="history" color={color} size={size} />

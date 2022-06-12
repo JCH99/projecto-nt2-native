@@ -1,10 +1,51 @@
-/* import React from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
   View,
   Button
 } from "react-native";
+
+const data = [
+  {
+    _id: "111",
+    idUsuario: "222",
+    fechaCompra: "21/06/2022 20:50:30", 
+    productos: [
+      {
+        _id: "333",
+        titulo: "Birra",
+        precio: 150,
+        cantidad: 4
+      },
+      {
+         _id: "777",
+        titulo: "Queso",
+        precio: 50,
+        cantidad: 2
+      }
+    ]
+  },
+  {
+    _id: "444",
+    idUsuario: "555",
+    fechaCompra: "25/06/2022 20:04:30", 
+    productos: [
+      {
+        _id: "666",
+        titulo: "Buena Birra",
+        precio: 150,
+        cantidad: 5
+      },
+      {
+         _id: "777",
+        titulo: "Queso",
+        precio: 50,
+        cantidad: 7
+      }
+    ]
+  }
+]
 
 export default function Historial({ navigation }) {
   const goToDetails = () => {
@@ -46,4 +87,4 @@ const styles = StyleSheet.create({
     width: "80%",
     height: "50%",
   },
-}); */
+});
