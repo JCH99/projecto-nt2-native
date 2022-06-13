@@ -30,7 +30,7 @@ const CardProdCompra = ({ data }) => {
       </Card.Content>
       <Card.Actions>
         <Button title="+" onPress={agregar} />
-        <Text>{data.item.cantidad}</Text>
+        <Button title={data.item.cantidad}/>
         <Button title="-" onPress={restar} />
       </Card.Actions>
     </Card>

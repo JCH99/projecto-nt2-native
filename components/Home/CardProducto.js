@@ -33,7 +33,7 @@ const restar = () => {
       </Card.Content>
       <Card.Actions>
         <Button title="+" onPress={agregar}/>
-        <Text>{cantidad}</Text>
+        <Button title={cantidad}/>
         <Button title="-" onPress={restar}/>
         {/* Ver de agregar un boton de "Comprar" */}
       </Card.Actions>

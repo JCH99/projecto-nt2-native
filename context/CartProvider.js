@@ -1,5 +1,4 @@
-import React from "react";
-import { createContext, useReducer } from "react";
+import React, {createContext, useReducer} from "react";
 
 // item = {
 //     id: id,
@@ -8,7 +7,7 @@ import { createContext, useReducer } from "react";
 //     precioUnitario,
 // }
 
-export const CartContext = React.createContext({
+export const CartContext = createContext({
   items: [],
   total: 0,
   addOne: item => {},
