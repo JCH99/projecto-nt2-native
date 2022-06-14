@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainNavigator from "./navigation/MainNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AuthProvider } from "./context/AuthContext";
-import { CartProvider } from "./context/CartProvider";
+import  CartProvider  from "./context/CartProvider";
 
 export default function App() {
   return (
