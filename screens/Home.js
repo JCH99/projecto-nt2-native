@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Destacados from "../components/Home/Destacados";
 import ProductoList from "../components/Home/ProductoList";
@@ -9,7 +9,8 @@ import { getProductos } from "../services/productosApi";
 //2.2 filter bebidas picadas
 //2.3 flatlist
 
-{/*const data = [
+{
+  /*const data = [
   {
     id: 1,
     title: "combo papitas con birra",
@@ -35,7 +36,8 @@ import { getProductos } from "../services/productosApi";
     title: "combo 5",
     img: "https://images.unsplash.com/photo-1561668048-fe9c092832e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
   },
-];*/}
+];*/
+}
 
 const Home = () => {
   const [productosList, setProductos] = useState([]);
@@ -44,7 +46,7 @@ const Home = () => {
     const list = await getProductos();
     const productosList = [];
     list.map((item) => productosList.push(item));
-    console.log(productosList)
+
     setProductos(productosList);
   }, []);
 

@@ -8,29 +8,26 @@ const CardProdCompra = ({ data }) => {
   const contexto = useContext(CartContext);
   const agregar = () => {
     const itemAAgregar = {
-      id: data.item._id,
-      titulo: data.item.titulo,
-      cantidad: 1,
-      precioUnitario: data.item.precio,
+      id: data.item.id,
     };
     contexto.addOne(itemAAgregar);
   };
   const restar = () => {
-    contexto.removeOne(data.item._id);
+    contexto.removeOne(data.item.id);
   };
 
   return (
     <Card>
       <Card.Title title={data.item.titulo} />
       <Card.Content>
-        <Paragraph>{`${data.item.cantidad} X $${data.item.precio}`}</Paragraph>
+        <Paragraph>{`${data.item.cantidad} X $${data.item.precioUnitario}`}</Paragraph>
         <Paragraph>{`Total: $${
-          data.item.cantidad * data.item.precio
+          data.item.cantidad * data.item.precioUnitario
         }`}</Paragraph>
       </Card.Content>
       <Card.Actions>
         <Button title="+" onPress={agregar} />
-        <Button title={data.item.cantidad}/>
+        <Button title={data.item.cantidad} />
         <Button title="-" onPress={restar} />
       </Card.Actions>
     </Card>

@@ -6,24 +6,27 @@ import { CartContext } from "../../context/CartProvider";
 
 // ***********VER FUNCIONALIDAD BOTONES************
 const CardProducto = ({ data }) => {
-const contexto = useContext(CartContext);
-let cantidad = 0;
-const itemAgregadoIndex = contexto.items.findIndex(item => item._id === data.item._id);
-if(itemAgregadoIndex !== -1){
-  cantidad = contexto.items[itemAgregadoIndex].cantidad;
-}
-const agregar = () => {
-  const itemAAgregar = {
-       id: data.item._id,
-       titulo: data.item.titulo,
-       cantidad: 1,
-       precioUnitario: data.item.precio,
+  const contexto = useContext(CartContext);
+  let cantidad = 0;
+
+  const itemAgregadoIndex = contexto.items.findIndex(
+    (item) => item.id === data.item._id
+  );
+  if (itemAgregadoIndex !== -1) {
+    cantidad = contexto.items[itemAgregadoIndex].cantidad;
   }
-  contexto.addOne(itemAAgregar);
-}
-const restar = () => {
-  contexto.removeOne(data.item._id);
-}
+  const agregar = () => {
+    const itemAAgregar = {
+      id: data.item._id,
+      titulo: data.item.titulo,
+      cantidad: 1,
+      precioUnitario: data.item.precio,
+    };
+    contexto.addOne(itemAAgregar);
+  };
+  const restar = () => {
+    contexto.removeOne(data.item._id);
+  };
   return (
     <Card>
       <Card.Title title={data.item.titulo} subtitle={data.item.tipo} />
@@ -32,9 +35,10 @@ const restar = () => {
         <Paragraph>{data.item.descripcion}</Paragraph>
       </Card.Content>
       <Card.Actions>
-        <Button title="+" onPress={agregar}/>
-        <Button title={cantidad}/>
-        <Button title="-" onPress={restar}/>
+        {cantidad > 0 && <Button title="-" onPress={restar} />}
+        <Button title={cantidad} />
+        <Button title="+" onPress={agregar} />
+
         {/* Ver de agregar un boton de "Comprar" */}
       </Card.Actions>
     </Card>

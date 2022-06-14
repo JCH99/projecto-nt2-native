@@ -6,10 +6,12 @@ import CompraList from "../components/Carrito/CompraList";
 
 const Carrito = () => {
   const context = useContext(CartContext);
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Productos</Text>
       <CompraList data={context.items} />
+      <Text>Total: ${context.total}</Text>
     </View>
   );
 };
