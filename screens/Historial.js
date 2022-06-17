@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import HistorialList from "../components/Historial/HistorialList";
 
-const data = [
+const compras = [
   {
     _id: "111",
     idUsuario: "222",
@@ -39,22 +39,30 @@ const data = [
         precio: 50,
         cantidad: 7,
       },
+      {
+        _id: "777",
+        titulo: "Queso",
+        precio: 50,
+        cantidad: 7,
+      },
     ],
   },
 ];
 
-export default function Historial({ navigation, data }) {
+export default function Historial({ navigation }) {
   const goToDetails = compra => {
     navigation.navigate("Carrito", compra);
   };
 
   return (
     <View style={styles.container}>
-      <HistorialList data={data} />
+      <HistorialList data={compras} />
+      {/*
       <Text style={styles.title}>A carrito</Text>
       <View style={styles.buttonContainer}>
         <Button title="Ir" onPress={goToDetails} color="teal" />
       </View>
+      */}
     </View>
   );
 }
