@@ -9,6 +9,9 @@ const CardProdCompra = ({ data }) => {
   const agregar = () => {
     const itemAAgregar = {
       _id: data.item._id,
+      titulo: data.item.titulo,
+      cantidad: 1,
+      precio: data.item.precio,
     };
     contexto.addOne(itemAAgregar);
   };
