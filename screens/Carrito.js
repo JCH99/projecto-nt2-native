@@ -1,17 +1,53 @@
 import React from "react";
 import { useContext } from "react";
 import { CartContext } from "../context/CartProvider";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import CompraList from "../components/Carrito/CompraList";
+import { Button } from "../components/Buttons/Button";
+import comprar from "../services/productosApi";
 
-const Carrito = () => {
+const Carrito = ({navigation}) => {
   const context = useContext(CartContext);
+
+  const hacerCompra = ()=> {
+    const exito = comprar(...);
+
+/* 
+{"productos": [{
+        "_id": "6296af6266dae4f7662bc3d5",
+        "titulo": "Stella Artois",
+        "precio": 100,
+        "cantidad": 8
+    },
+    {
+        "_id": "6296af6266dae4f7662bc3d7",
+        "titulo": "Combo Quesos",
+        "precio": 520,
+        "cantidad": 2
+    }],
+    "_id": "629fd97ef75aed07859b4c1f"
+}
+*/
+
+    if(exito){
+      context.reset();
+      
+      Alert.alert(
+        "Compra exitosa",
+        "Gracias, vuelva prontos!",
+        [
+          { text: "Volver al inicio", onPress: () => navigation.navigate("Home") }
+        ]
+      );
+    }
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Productos</Text>
       <CompraList data={context.items} />
       <Text>Total: ${context.total}</Text>
+      <Button title="Comprar" onPress={hacerCompra}/>
     </View>
   );
 };

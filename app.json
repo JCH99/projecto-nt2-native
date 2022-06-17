@@ -4,11 +4,11 @@
     "slug": "proyecto-nt2-native",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png", //cambiar a ori
+    "icon": "./assets/icon.png", 
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#272727"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

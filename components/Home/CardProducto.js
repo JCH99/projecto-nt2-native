@@ -31,7 +31,7 @@ const CardProducto = ({ data }) => {
     <Card>
       <Card.Title title={data.item.titulo} subtitle={data.item.tipo} />
       <Card.Content>
-        <Card.Cover source={{ uri: data.item.img }} />
+        <Card.Cover source={{ uri: data.item.imagen }} />
         <Paragraph>{data.item.descripcion}</Paragraph>
       </Card.Content>
       <Card.Actions>

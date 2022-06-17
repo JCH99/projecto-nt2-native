@@ -6,32 +6,36 @@ import {
   ImageBackground,
   Dimensions} from "react-native";
 import Carousel from "react-native-snap-carousel";
+import carrusel1 from "./../../assets/carrusel1.jpg";
+import carrusel2 from "./../../assets/carrusel2.jpg";
+import carrusel3 from "./../../assets/carrusel3.jpg";
+import carrusel4 from "./../../assets/carrusel4.jpg";
+import icon from "./../../assets/icon.png";
 
-const Combo = ({ item, index }) => {
+const imagenes = [{img: carrusel1}, {img: carrusel2}, {img: icon}, {img: carrusel3}, {img: carrusel4}];
+const Promo = ({ item }) => {
   return (
     <View>
         <ImageBackground
-          source={{ uri: item.img }}
+          source={ item.img }
           resizeMode="cover"
           style={styles.image}
-        >
-          <Text style={styles.title}>{item.title}</Text>
-        </ImageBackground>
+        />
     </View>  
   );
 };
 
-const Destacados = (props) => {
+const Destacados = () => {
   const windowWidth = Dimensions.get("window").width;
   return (
     <Carousel
       loop
       autoplay
       lockScrollWhileSnapping
-      data={props.data}
+      data={imagenes}
       sliderWidth={windowWidth}
       itemWidth={200}
-      renderItem={Combo}
+      renderItem={Promo}
     />
   );
 };

@@ -12,6 +12,7 @@ export const CartContext = createContext({
   total: 0,
   addOne: (item) => {},
   removeOne: (id) => {},
+  reset: ()=> {},
 });
 
 const defaultCartState = {
@@ -20,6 +21,9 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
+  if(action.type === "RESET"){
+    return defaultCartState;
+  }
   if (action.type === "ADD_ONE") {
     const updatedAmount = state.total + action.item.precioUnitario;
 
@@ -99,11 +103,16 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "REMOVE_ONE", id: id });
   };
 
+  const resetCartHandler = ()=>{
+    dispatchCartAction({ type: "RESET" });
+  }
+
   const cartContext = {
     items: cartState.items,
     total: cartState.total,
     addOne: addItemToCartHandler,
     removeOne: removeItemFromCartHandler,
+    reset: resetCartHandler,
   };
 
   return (

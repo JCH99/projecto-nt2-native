@@ -1,9 +1,7 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import CardProducto from "./CardProducto";
-{
-  /*search bar / filter */
-}
+
 const ProductoList = (props) => {
   return (
     <FlatList
