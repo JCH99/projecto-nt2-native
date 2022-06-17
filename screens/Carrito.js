@@ -4,15 +4,23 @@ import { CartContext } from "../context/CartProvider";
 import { View, Text, StyleSheet, Alert } from "react-native";
 import CompraList from "../components/Carrito/CompraList";
 import { Button } from "../components/Buttons/Button";
-import comprar from "../services/productosApi";
+import {comprar} from "../services/productosApi";
 
 const Carrito = ({navigation}) => {
   const context = useContext(CartContext);
 
-  const hacerCompra = ()=> {
-    const exito = comprar(...);
+  async function hacerCompra () {
+    const exito = await comprar({productos: context.items, _id: "629fd97ef75aed07859b4c1f"});
 
 /* 
+
+ const itemAAgregar = {
+      _id: data.item._id,
+      titulo: data.item.titulo,
+      cantidad: 1,
+      precio: data.item.precio,
+    };
+
 {"productos": [{
         "_id": "6296af6266dae4f7662bc3d5",
         "titulo": "Stella Artois",

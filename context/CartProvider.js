@@ -1,10 +1,10 @@
 import React, { createContext, useReducer } from "react";
 
 // item = {
-//     id: id,
+//     _id: id,
 //     titulo: String,
 //     cantidad: int,
-//     precioUnitario,
+//     precio,
 // }
 
 export const CartContext = createContext({
@@ -25,11 +25,11 @@ const cartReducer = (state, action) => {
     return defaultCartState;
   }
   if (action.type === "ADD_ONE") {
-    const updatedAmount = state.total + action.item.precioUnitario;
+    const updatedAmount = state.total + action.item.precio;
 
     //Check si existe en el carrito
     const existingCartItemIndex = state.items.findIndex(
-      (item) => item.id === action.item.id
+      (item) => item._id === action.item._id
     );
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
@@ -54,16 +54,16 @@ const cartReducer = (state, action) => {
   }
   if (action.type === "REMOVE_ONE") {
     const existingCartItemIndex = state.items.findIndex(
-      (item) => item.id === action.id
+      (item) => item._id === action._id
     );
     if (existingCartItemIndex !== -1) {
       const existingItem = state.items[existingCartItemIndex];
-      const updatedAmount = state.total - existingItem.precioUnitario;
+      const updatedAmount = state.total - existingItem.precio;
       let updatedItems;
 
       //Si solo habia 1, elimina el producto del carrito
       if (existingItem.cantidad === 1) {
-        updatedItems = state.items.filter((item) => item.id !== action.id);
+        updatedItems = state.items.filter((item) => item._id !== action._id);
       } else {
         const updatedItem = {
           ...existingItem,
@@ -100,7 +100,7 @@ const CartProvider = (props) => {
   };
 
   const removeItemFromCartHandler = (id) => {
-    dispatchCartAction({ type: "REMOVE_ONE", id: id });
+    dispatchCartAction({ type: "REMOVE_ONE", _id: id });
   };
 
   const resetCartHandler = ()=>{

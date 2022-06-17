@@ -10,17 +10,17 @@ const CardProducto = ({ data }) => {
   let cantidad = 0;
 
   const itemAgregadoIndex = contexto.items.findIndex(
-    (item) => item.id === data.item._id
+    (item) => item._id === data.item._id
   );
   if (itemAgregadoIndex !== -1) {
     cantidad = contexto.items[itemAgregadoIndex].cantidad;
   }
   const agregar = () => {
     const itemAAgregar = {
-      id: data.item._id,
+      _id: data.item._id,
       titulo: data.item.titulo,
       cantidad: 1,
-      precioUnitario: data.item.precio,
+      precio: data.item.precio,
     };
     contexto.addOne(itemAAgregar);
   };

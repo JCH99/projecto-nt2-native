@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setIsSigned(false);
   }
-
+console.log(user);
   return (
     <AuthContext.Provider value={{ isSigned, user, signIn, signOut }}>
       {/* 1 a N componentes que van a consumir el contexto */}

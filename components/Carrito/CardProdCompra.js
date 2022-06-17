@@ -8,21 +8,21 @@ const CardProdCompra = ({ data }) => {
   const contexto = useContext(CartContext);
   const agregar = () => {
     const itemAAgregar = {
-      id: data.item.id,
+      _id: data.item._id,
     };
     contexto.addOne(itemAAgregar);
   };
   const restar = () => {
-    contexto.removeOne(data.item.id);
+    contexto.removeOne(data.item._id);
   };
 
   return (
     <Card>
       <Card.Title title={data.item.titulo} />
       <Card.Content>
-        <Paragraph>{`${data.item.cantidad} X $${data.item.precioUnitario}`}</Paragraph>
+        <Paragraph>{`${data.item.cantidad} X $${data.item.precio}`}</Paragraph>
         <Paragraph>{`Total: $${
-          data.item.cantidad * data.item.precioUnitario
+          data.item.cantidad * data.item.precio
         }`}</Paragraph>
       </Card.Content>
       <Card.Actions>
