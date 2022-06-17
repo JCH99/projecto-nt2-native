@@ -4,15 +4,18 @@ import { CartContext } from "../context/CartProvider";
 import { View, Text, StyleSheet, Alert } from "react-native";
 import CompraList from "../components/Carrito/CompraList";
 import { Button } from "../components/Buttons/Button";
-import {comprar} from "../services/productosApi";
+import { comprar } from "../services/productosApi";
 
-const Carrito = ({navigation}) => {
+const Carrito = ({ navigation }) => {
   const context = useContext(CartContext);
 
-  async function hacerCompra () {
-    const exito = await comprar({productos: context.items, _id: "629fd97ef75aed07859b4c1f"});
+  async function hacerCompra() {
+    const exito = await comprar({
+      productos: context.items,
+      _id: "629fd97ef75aed07859b4c1f",
+    });
 
-/* 
+    /* 
 
  const itemAAgregar = {
       _id: data.item._id,
@@ -37,25 +40,30 @@ const Carrito = ({navigation}) => {
 }
 */
 
-    if(exito){
+    if (exito) {
       context.reset();
-      
+
+      Alert.alert("Compra exitosa", "Gracias, vuelva prontos!", [
+        {
+          text: "Volver al inicio",
+          onPress: () => navigation.navigate("Home"),
+        },
+      ]);
+    } else {
       Alert.alert(
-        "Compra exitosa",
-        "Gracias, vuelva prontos!",
-        [
-          { text: "Volver al inicio", onPress: () => navigation.navigate("Home") }
-        ]
+        "No se pudo realizar la compra",
+        "Proba reduciendo las cantidades, no tenemos tanto stock!",
+        [{ text: "Ok" }]
       );
     }
-  };
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Productos</Text>
       <CompraList data={context.items} />
       <Text>Total: ${context.total}</Text>
-      <Button title="Comprar" onPress={hacerCompra}/>
+      <Button title="Comprar" onPress={hacerCompra} />
     </View>
   );
 };
