@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
-  const { isSigned } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
 
   return (
     <Stack.Navigator
@@ -15,7 +15,7 @@ export default function MainNavigator() {
         headerShown: false,
       }}
     >
-      {!isSigned ? (
+      {!token ? (
         <Stack.Screen name="Login" component={Login} />
       ) : (
         <Stack.Screen

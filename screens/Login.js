@@ -4,7 +4,6 @@ import { Button } from "../components/Buttons/Button";
 import Input from "../components/Input";
 import { AuthContext } from "../context/AuthContext";
 
-//Para loguearse de manera exitosa usar email = test@gmail.com, password = 1234
 export function LoginForm({ setIsLoading }) {
   const { signIn } = useContext(AuthContext);
   const [email, setEmail] = useState("");
@@ -21,13 +20,13 @@ export function LoginForm({ setIsLoading }) {
     try {
       setIsLoading(true);
       await signIn(email, password);
+      setIsLoading(false);
     } catch (err) {
       Alert.alert(
         "Acceso inválido",
         "Correo electrónico y/o contraseña incorrecta"
       );
       setIsLoading(false);
-
       return;
     }
   };
@@ -37,13 +36,13 @@ export function LoginForm({ setIsLoading }) {
       <Input
         placeholder="Correo electrónico"
         value={email}
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={text => setEmail(text)}
         keyboardType={"email-address"}
       />
       <Input
         placeholder="Contraseña"
         value={password}
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={text => setPassword(text)}
         isPassword
       />
       <Button

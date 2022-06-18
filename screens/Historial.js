@@ -1,55 +1,43 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import HistorialList from "../components/Historial/HistorialList";
+import { useState, useEffect, useContext } from "react";
+import getHistorial from "../services/historialApi";
+import { AuthContext } from "../context/AuthContext";
+import jwt_decode from "jwt-decode";
 
-const compras = [
-  {
-    _id: "111",
-    idUsuario: "222",
-    fechaCompra: "21/06/2022 20:50:30",
-    productos: [
-      {
-        _id: "333",
-        titulo: "Birra",
-        precio: 150,
-        cantidad: 4,
-      },
-      {
-        _id: "777",
-        titulo: "Queso",
-        precio: 50,
-        cantidad: 2,
-      },
-    ],
-  },
-  {
-    _id: "444",
-    idUsuario: "555",
-    fechaCompra: "25/06/2022 20:04:30",
-    productos: [
-      {
-        _id: "666",
-        titulo: "Buena Birra",
-        precio: 150,
-        cantidad: 5,
-      },
-      {
-        _id: "777",
-        titulo: "Queso",
-        precio: 50,
-        cantidad: 7,
-      },
-      {
-        _id: "777",
-        titulo: "Queso",
-        precio: 50,
-        cantidad: 7,
-      },
-    ],
-  },
-];
+// [
+//   {
+//     _id: "62add884df62ca4822dbc26e",
+//     userId: "629fd9b3f75aed07859b4c20",
+//     productos: [
+//       {
+//         _id: "6296af6266dae4f7662bc3d5",
+//         titulo: "Stella Artois",
+//         precio: 100,
+//         cantidad: 8,
+//       },
+//       {
+//         _id: "6296af6266dae4f7662bc3d7",
+//         titulo: "Combo Quesos",
+//         precio: 520,
+//         cantidad: 2,
+//       },
+//     ],
+//     fecha: "2022-06-18 13:52:04",
+//   },
+// ];
 
 export default function Historial({ navigation }) {
+  const token = useContext(AuthContext).token;
+  const [compras, setCompras] = useState([]);
+
+  useEffect(async () => {
+    const decoded = jwt_decode(token);
+    const list = await getHistorial(decoded._id);
+    setCompras(list);
+  }, []);
+
   const goToDetails = compra => {
     navigation.navigate("Carrito", compra);
   };

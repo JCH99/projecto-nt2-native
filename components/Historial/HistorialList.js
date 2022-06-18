@@ -1,23 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, FlatList, TouchableWithoutFeedback } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  FlatList,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 
-const HistorialList = (props) => {
+const HistorialList = props => {
   return (
     <FlatList
       styles={styles.listContainer}
       data={props.data}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <Card>
-    <Card.Content>
-        <TouchableWithoutFeedback onPress={ () => this.actionOnRow(item)}>
-            <View>
-               <Title>Fecha: {item.fechaCompra}</Title>
-               <Paragraph>Cantidad de productos: {item.productos.length}</Paragraph>
-            </View>
-       </TouchableWithoutFeedback>
-       </Card.Content>
-  </Card>
+          <Card.Content>
+            <TouchableWithoutFeedback onPress={() => this.actionOnRow(item)}>
+              <View>
+                <Title>Fecha: {item.fecha}</Title>
+                <Paragraph>
+                  Cantidad de productos: {item.productos.length}
+                </Paragraph>
+              </View>
+            </TouchableWithoutFeedback>
+          </Card.Content>
+        </Card>
       )}
       numColumns={1}
     />

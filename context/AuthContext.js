@@ -7,24 +7,21 @@ export const AuthContext = createContext();
 
 //2do paso: crear el Provider
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isSigned, setIsSigned] = useState(false);
+  const [token, setToken] = useState(null);
 
   async function signIn(email, password) {
     // Del lado de backend habrá una función para loguearse. A esta función le vamos a mandar el email y password y en el backend se harán las validaciones correspondientes
-    const response = await usersApi.signInWithEmailAndPassword(email, password);
-    setUser(response.data.user);
-    usersApi.defaults.headers.Authorization = `Bearer ${response.data.token}`;
-    setIsSigned(true);
+    const response = await usersApi.login(email, password);
+    setToken(response.token);
+    usersApi.defaults.headers.Authorization = `Bearer ${response.token}`;
   }
 
   function signOut() {
-    setUser(null);
-    setIsSigned(false);
+    setToken(null);
   }
-console.log(user);
+
   return (
-    <AuthContext.Provider value={{ isSigned, user, signIn, signOut }}>
+    <AuthContext.Provider value={{ token, signIn, signOut }}>
       {/* 1 a N componentes que van a consumir el contexto */}
       {children}
     </AuthContext.Provider>

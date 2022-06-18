@@ -28,4 +28,3 @@ export async function comprar(carrito) {
     console.log("Solicitud fallida", error);
   }
 }
-
