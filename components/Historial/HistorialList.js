@@ -30,8 +30,8 @@ const HistorialList = ({ navigation, props }) => {
           </Card.Content>
         </Card>
       )}
+      keyExtractor={(item, index) => index.toString()}
       numColumns={1}
-      // keyExtractor={item => item._id}
     />
   );
 };

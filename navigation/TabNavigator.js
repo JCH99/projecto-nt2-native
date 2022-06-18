@@ -5,19 +5,14 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Home from "../screens/Home";
 import Carrito from "../screens/Carrito";
 import Historial from "../screens/Historial";
-import Card from "../components/Home/CardProducto";
 
 const Tab = createBottomTabNavigator();
-
-const TEST = () => {
-  return <Card></Card>;
-};
 
 const TabNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
+        name="Productos"
         component={Home}
         options={{
           tabBarIcon: ({ size, color }) => (

@@ -26,37 +26,38 @@ export default function Input(props) {
       />
       {isPassword && (
         <Pressable onPress={handlePasswordVisibility}>
-          <MaterialCommunityIcons name={rightIcon} size={22} color="#fdfdfd" />
+          <MaterialCommunityIcons name={rightIcon} size={22} color="#000" />
         </Pressable>
       )}
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   inputContainerBlur: {
     width: "100%",
     borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
+    borderWidth: 2,
     marginVertical: 20,
-    backgroundColor: "#fdfdfd60",
-    borderColor: "#fdfdfd20",
+    backgroundColor: "white",
+    borderColor: "#F1C40F",
   },
   inputContainerFocus: {
-    backgroundColor: "#fdfdfd30",
+    backgroundColor: "white",
     width: "100%",
     borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 2,
-    borderColor: "white",
+    borderWidth: 4,
+    borderColor: "#F1C40F",
     marginVertical: 20,
   },
   inputField: {
     padding: 14,
     fontSize: 20,
     width: "90%",
-    color: "white",
+    color: "#000",
   },
 });

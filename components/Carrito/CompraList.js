@@ -1,22 +1,16 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-// import CardProdCompra from "./CardProdCompra";
 import CustomCard from "../Common/CustomCard";
 
-const CompraList = (props) => {
+const CompraList = props => {
   return (
     <FlatList
       styles={styles.listContainer}
       data={props.data}
-      renderItem={(producto) => (
-        <CustomCard
-          style={styles.listItem}
-          variant="carrito"
-          data={producto}
-          keyExtractor={(item) => item._id}
-        />
+      renderItem={producto => (
+        <CustomCard style={styles.listItem} variant="carrito" data={producto} />
       )}
-      // keyExtractor={(item) => data.indexOf(item)}
+      keyExtractor={(item, index) => index.toString()}
       numColumns={1}
     />
   );
@@ -32,10 +26,6 @@ const styles = StyleSheet.create({
     // padding: 20,
   },
 });
-
-// const Carrito = () => {
-//   return <CardProducto data={data}></CardProducto>;
-// };
 
 export default CompraList;
 

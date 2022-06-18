@@ -10,24 +10,25 @@ const Home = () => {
   useEffect(async () => {
     const list = await getProductos();
     const productosList = [];
-    list.map((item) => productosList.push(item));
+    list.map(item => productosList.push(item));
 
     setProductos(productosList);
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Destacados />
-      <Text style={styles.header}>Productos</Text>
-
-      {productosList.length > 0 && <ProductoList data={productosList} />}
+    <View>
+      <Destacados style={styles.containerDestacados} />
+      <Text></Text>
+      {productosList.length > 0 && (
+        <ProductoList style={{ flex: 1 }} data={productosList} />
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  containerDestacados: {
+    // flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },

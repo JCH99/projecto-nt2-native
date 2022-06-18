@@ -12,14 +12,14 @@ export function Button(props) {
       justifyContent: "center",
       borderRadius: 8,
       elevation: 5,
-      backgroundColor: inverted ? "white" : "teal",
+      backgroundColor: "#F1C40F",
     },
     buttonText: {
       fontSize: 20,
       lineHeight: 21,
       fontWeight: "bold",
       letterSpacing: 0.25,
-      color: inverted ? "teal" : "white",
+      color: "#000",
     },
   });
 

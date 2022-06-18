@@ -36,13 +36,13 @@ export function LoginForm({ setIsLoading }) {
       <Input
         placeholder="Correo electrónico"
         value={email}
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={text => setEmail(text)}
         keyboardType={"email-address"}
       />
       <Input
         placeholder="Contraseña"
         value={password}
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={text => setPassword(text)}
         isPassword
       />
       <Button
@@ -66,7 +66,7 @@ export default function LoginScreen() {
         </View>
       ) : (
         <View style={styles.formView}>
-          <Text style={styles.title}>Iniciar sesión</Text>
+          <Text style={styles.title}>¡Bienvenido!</Text>
           <LoginForm setIsLoading={setIsLoading} />
         </View>
       )}
@@ -77,20 +77,20 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "teal",
+    backgroundColor: "white",
     alignItems: "center",
-    paddingTop: "10%",
+    paddingTop: "30%",
     paddingHorizontal: "10%",
   },
   formView: {
-    marginBottom: 20,
+    //marginBottom: 20,
     alignContent: "center",
   },
   title: {
     fontSize: 30,
     alignContent: "center",
     textAlign: "center",
-    color: "white",
+    color: "#000",
     margin: 30,
   },
 });

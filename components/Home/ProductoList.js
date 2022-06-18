@@ -1,17 +1,16 @@
 import React, { useContext } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-// import CardProducto from "./CardProducto";
 import { CartContext } from "../../context/CartProvider";
 import CustomCard from "../Common/CustomCard";
 
-const ProductoList = (props) => {
+const ProductoList = props => {
   const contexto = useContext(CartContext);
   // console.log(props.data);
-  const products = props.data.map((product) => {
+  const products = props.data.map(product => {
     let cantidad = 0;
     // console.log(contexto.items);
     const itemAgregadoIndex = contexto.items.findIndex(
-      (item) => item._id === product._id
+      item => item._id === product._id
     );
 
     if (itemAgregadoIndex !== -1) {
@@ -24,15 +23,10 @@ const ProductoList = (props) => {
     <FlatList
       styles={styles.listContainer}
       data={products}
-      renderItem={(producto) => (
-        <CustomCard
-          style={styles.listItem}
-          variant="tienda"
-          data={producto}
-          keyExtractor={(item) => item._id}
-        />
+      renderItem={producto => (
+        <CustomCard style={styles.listItem} variant="tienda" data={producto} />
       )}
-      // keyExtractor={(item) => data.indexOf(item)}
+      keyExtractor={(item, index) => index.toString()}
       numColumns={1}
     />
   );
@@ -48,10 +42,6 @@ const styles = StyleSheet.create({
     // padding: 20,
   },
 });
-
-// const Carrito = () => {
-//   return <CardProducto data={data}></CardProducto>;
-// };
 
 export default ProductoList;
 
