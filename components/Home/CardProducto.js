@@ -27,6 +27,7 @@ const CardProducto = ({ data }) => {
   const restar = () => {
     contexto.removeOne(data.item._id);
   };
+  console.log(data);
   return (
     <Card>
       <Card.Title title={data.item.titulo} subtitle={data.item.tipo} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-import CardProdCompra from "./CardProdCompra";
+// import CardProdCompra from "./CardProdCompra";
+import CustomCard from "../Common/CustomCard";
 
 const CompraList = (props) => {
   return (
@@ -8,8 +9,9 @@ const CompraList = (props) => {
       styles={styles.listContainer}
       data={props.data}
       renderItem={(producto) => (
-        <CardProdCompra
+        <CustomCard
           style={styles.listItem}
+          variant="carrito"
           data={producto}
           keyExtractor={(item) => item._id}
         />

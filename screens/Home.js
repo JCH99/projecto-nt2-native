@@ -17,9 +17,10 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Destacados/>
+      <Destacados />
       <Text style={styles.header}>Productos</Text>
-      <ProductoList data={productosList} />
+
+      {productosList.length > 0 && <ProductoList data={productosList} />}
     </View>
   );
 };
