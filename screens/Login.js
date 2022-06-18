@@ -20,7 +20,7 @@ export function LoginForm({ setIsLoading }) {
     try {
       setIsLoading(true);
       await signIn(email, password);
-      setIsLoading(false);
+      // setIsLoading(false);
     } catch (err) {
       Alert.alert(
         "Acceso inválido",
@@ -36,13 +36,13 @@ export function LoginForm({ setIsLoading }) {
       <Input
         placeholder="Correo electrónico"
         value={email}
-        onChangeText={text => setEmail(text)}
+        onChangeText={(text) => setEmail(text)}
         keyboardType={"email-address"}
       />
       <Input
         placeholder="Contraseña"
         value={password}
-        onChangeText={text => setPassword(text)}
+        onChangeText={(text) => setPassword(text)}
         isPassword
       />
       <Button

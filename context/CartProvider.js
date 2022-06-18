@@ -7,12 +7,27 @@ import React, { createContext, useReducer } from "react";
 //     precio,
 // }
 
+//       {
+//         _id: "6296af6266dae4f7662bc3d5",
+//         titulo: "Stella Artois",
+//         precio: 100,
+//         cantidad: 8,
+//       },
+//       {
+//         _id: "6296af6266dae4f7662bc3d7",
+//         titulo: "Combo Quesos",
+//         precio: 520,
+//         cantidad: 2,
+//       },
+//     [800,1040]
+
 export const CartContext = createContext({
   items: [],
   total: 0,
   addOne: (item) => {},
   removeOne: (id) => {},
-  reset: ()=> {},
+  reset: () => {},
+  loadCarrito: ([]) => {},
 });
 
 const defaultCartState = {
@@ -21,7 +36,17 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
-  if(action.type === "RESET"){
+  if (action.type === "LOAD_CARRITO") {
+    const partialTotals = action.items.map(
+      (item) => item.precio * item.cantidad
+    );
+    const updatedTotal = partialTotals.reduce((prev, cur) => prev + cur, 0);
+    return {
+      items: action.items,
+      total: updatedTotal,
+    };
+  }
+  if (action.type === "RESET") {
     return defaultCartState;
   }
   if (action.type === "ADD_ONE") {
@@ -103,9 +128,13 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "REMOVE_ONE", _id: id });
   };
 
-  const resetCartHandler = ()=>{
+  const resetCartHandler = () => {
     dispatchCartAction({ type: "RESET" });
-  }
+  };
+
+  const loadCarritoHandler = (items) => {
+    dispatchCartAction({ type: "LOAD_CARRITO", items });
+  };
 
   const cartContext = {
     items: cartState.items,
@@ -113,6 +142,7 @@ const CartProvider = (props) => {
     addOne: addItemToCartHandler,
     removeOne: removeItemFromCartHandler,
     reset: resetCartHandler,
+    loadCarrito: loadCarritoHandler,
   };
 
   return (

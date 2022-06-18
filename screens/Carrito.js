@@ -42,7 +42,9 @@ const Carrito = ({ navigation }) => {
       <Text style={styles.header}>Productos</Text>
       <CompraList data={context.items} />
       <Text>Total: ${context.total}</Text>
-      <Button title="Comprar" onPress={hacerCompra} />
+      {context.items.length > 0 && (
+        <Button title="Comprar" onPress={hacerCompra} />
+      )}
     </View>
   );
 };

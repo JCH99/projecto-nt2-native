@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 
-const HistorialList = props => {
+const HistorialList = (props) => {
   return (
     <FlatList
       styles={styles.listContainer}
@@ -32,6 +32,11 @@ const HistorialList = props => {
     />
   );
 };
+
+// guiarse de screen carrito.
+// agregar button con onPress llamando a una funcion definida en HistorialList
+// en esta funcion llamar al metodo para llenar carrito del context pasandole SOLO items en el formato adecuado Y hacer el navigate a screen carrito.
+// TouchableWithoutFeedback ???????????????????
 
 const styles = StyleSheet.create({
   listContainer: {
