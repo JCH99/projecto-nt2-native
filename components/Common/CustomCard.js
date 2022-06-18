@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Paragraph } from "react-native-paper";
+import { Card, Paragraph, Title } from "react-native-paper";
 import { Button } from "../Buttons/Button";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
@@ -7,7 +7,7 @@ import { CartContext } from "../../context/CartProvider";
 // variant tienda -> imagen descripcion
 // variant carrito -> precio
 
-const CustomCard = (props) => {
+const CustomCard = props => {
   const { _id, titulo, subtitulo, cantidad, precio, descripcion, imagen } =
     props.data.item;
   const contexto = useContext(CartContext);

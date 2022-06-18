@@ -28,7 +28,7 @@ import jwt_decode from "jwt-decode";
 //   },
 // ];
 
-export default function Historial({ navigation }) {
+export default function Historial() {
   const token = useContext(AuthContext).token;
   const [compras, setCompras] = useState([]);
 
@@ -38,19 +38,9 @@ export default function Historial({ navigation }) {
     setCompras(list);
   }, []);
 
-  const goToDetails = compra => {
-    navigation.navigate("Carrito", compra);
-  };
-
   return (
     <View style={styles.container}>
       <HistorialList data={compras} />
-      {/*
-      <Text style={styles.title}>A carrito</Text>
-      <View style={styles.buttonContainer}>
-        <Button title="Ir" onPress={goToDetails} color="teal" />
-      </View>
-      */}
     </View>
   );
 }

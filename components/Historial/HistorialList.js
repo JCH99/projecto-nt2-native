@@ -1,34 +1,37 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  FlatList,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartProvider";
 
-const HistorialList = (props) => {
+const HistorialList = ({ navigation, props }) => {
+  const context = useContext(CartContext);
+  console.log(props);
+
+  function recargarCarrito() {
+    context.loadCarrito({ productos: context.items });
+    navigation.navigate("Carrito");
+  }
+
   return (
     <FlatList
       styles={styles.listContainer}
-      data={props.data}
+      data={props}
       renderItem={({ item }) => (
         <Card>
           <Card.Content>
-            <TouchableWithoutFeedback onPress={() => this.actionOnRow(item)}>
-              <View>
-                <Title>Fecha: {item.fecha}</Title>
-                <Paragraph>
-                  Cantidad de productos: {item.productos.length}
-                </Paragraph>
-              </View>
-            </TouchableWithoutFeedback>
+            <View>
+              <Title>Fecha: {item.data.fecha}</Title>
+              <Paragraph>
+                Cantidad de productos: {item.data.productos.length}
+              </Paragraph>
+              <Button title="Volver a comprar" onPress={recargarCarrito} />
+            </View>
           </Card.Content>
         </Card>
       )}
       numColumns={1}
+      // keyExtractor={item => item._id}
     />
   );
 };
