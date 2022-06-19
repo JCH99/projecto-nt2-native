@@ -25,7 +25,7 @@ const Carrito = ({ navigation }) => {
       Alert.alert("Compra exitosa", "Gracias, vuelva prontos!", [
         {
           text: "Volver al inicio",
-          onPress: () => navigation.navigate("Home"),
+          onPress: () => navigation.navigate("Productos"),
         },
       ]);
     } else {

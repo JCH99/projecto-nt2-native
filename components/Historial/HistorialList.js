@@ -4,9 +4,10 @@ import { Card, Paragraph, Title } from "react-native-paper";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
 
-const HistorialList = ({ navigation, props }) => {
+const HistorialList = props => {
   const context = useContext(CartContext);
-  console.log(props);
+  //console.log(props.data);
+  const products = props.data;
 
   function recargarCarrito() {
     context.loadCarrito({ productos: context.items });
@@ -16,14 +17,14 @@ const HistorialList = ({ navigation, props }) => {
   return (
     <FlatList
       styles={styles.listContainer}
-      data={props}
+      data={products}
       renderItem={({ item }) => (
         <Card>
           <Card.Content>
             <View>
-              <Title>Fecha: {item.data.fecha}</Title>
+              <Title>Fecha: {item.fecha}</Title>
               <Paragraph>
-                Cantidad de productos: {item.data.productos.length}
+                Cantidad de productos: {item.productos.length}
               </Paragraph>
               <Button title="Volver a comprar" onPress={recargarCarrito} />
             </View>

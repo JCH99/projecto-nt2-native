@@ -23,6 +23,9 @@ const ProductoList = props => {
     <FlatList
       styles={styles.listContainer}
       data={products}
+      ItemSeparatorComponent={() => {
+        return (<View style={{height:2, backgroundColor:'#F1C40F'}} />);
+      }}
       renderItem={producto => (
         <CustomCard style={styles.listItem} variant="tienda" data={producto} />
       )}

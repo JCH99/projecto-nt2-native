@@ -6,13 +6,14 @@ export function Button(props) {
 
   const styles = StyleSheet.create({
     button: {
-      padding: 15,
+      padding: 10,
       marginVertical: 20,
       alignItems: "center",
       justifyContent: "center",
       borderRadius: 8,
       elevation: 5,
       backgroundColor: "#F1C40F",
+      margin: 1.3
     },
     buttonText: {
       fontSize: 20,

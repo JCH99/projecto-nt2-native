@@ -16,27 +16,36 @@ const Home = () => {
   }, []);
 
   return (
-    <View>
-      <Destacados style={styles.containerDestacados} />
-      <Text></Text>
-      {productosList.length > 0 && (
-        <ProductoList style={{ flex: 1 }} data={productosList} />
-      )}
+    <View style={styles.header}>
+      <View style={styles.containerDestacados}>
+        <Destacados  />
+      </View>
+      <View style={styles.containerProductos}>
+        {productosList.length > 0 && (
+          <ProductoList style={{ flex: 1 }} data={productosList} />
+        )}
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   containerDestacados: {
-    // flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white"
+    //flex: 1,
+    //alignItems: "center",
+    //justifyContent: "center"
   },
-
+  containerProductos: {
+    flex:1,
+    marginTop: 10
+  },
   header: {
+    flex: 1,
     fontSize: 24,
     marginBottom: 16,
     fontWeight: "700",
+    backgroundColor: "white"
   },
 
   section: {
