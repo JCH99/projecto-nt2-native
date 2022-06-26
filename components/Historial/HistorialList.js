@@ -6,12 +6,11 @@ import { CartContext } from "../../context/CartProvider";
 
 const HistorialList = props => {
   const context = useContext(CartContext);
-  //console.log(props.data);
   const products = props.data;
 
-  function recargarCarrito() {
-    context.loadCarrito({ productos: context.items });
-    navigation.navigate("Carrito");
+  function recargarCarrito(productos) {
+    context.loadCarrito(productos);
+    props.navigation.navigate("Carrito");
   }
 
   return (
@@ -26,7 +25,7 @@ const HistorialList = props => {
               <Paragraph>
                 Cantidad de productos: {item.productos.length}
               </Paragraph>
-              <Button title="Volver a comprar" onPress={recargarCarrito} />
+              <Button title="Volver a comprar" onPress={()=>recargarCarrito(item.productos)} />
             </View>
           </Card.Content>
         </Card>
@@ -36,11 +35,6 @@ const HistorialList = props => {
     />
   );
 };
-
-// guiarse de screen carrito.
-// agregar button con onPress llamando a una funcion definida en HistorialList
-// en esta funcion llamar al metodo para llenar carrito del context pasandole SOLO items en el formato adecuado Y hacer el navigate a screen carrito.
-// TouchableWithoutFeedback ???????????????????
 
 const styles = StyleSheet.create({
   listContainer: {

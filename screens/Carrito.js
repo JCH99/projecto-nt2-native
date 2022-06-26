@@ -39,7 +39,6 @@ const Carrito = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Productos</Text>
       <CompraList data={context.items} />
       <Text>Total: ${context.total}</Text>
       {context.items.length > 0 && (
