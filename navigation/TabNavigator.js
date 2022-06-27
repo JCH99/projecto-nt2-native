@@ -24,7 +24,7 @@ const TabNavigator = () => {
           headerRight: () => (
             <Button
               onPress={signOut}
-              title="Cerrar sesion"
+              title="Cerrar sesión"
               color="#F1C40F"
             />
           ),

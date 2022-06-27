@@ -39,11 +39,16 @@ const Carrito = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <CompraList data={context.items} />
-      <Text>Total: ${context.total}</Text>
-      {context.items.length > 0 && (
-        <Button title="Comprar" onPress={hacerCompra} />
+      <View style={styles.list}>
+      <CompraList data={context.items}/>
+      </View>
+      {/*<View style={{height:2, backgroundColor:'#F1C40F'}} />*/}
+      <View style={styles.final}>
+      {context.items.length > 0 && (<>
+        <Text style={styles.total}>Total: ${context.total}</Text>
+        <Button style={styles.button} title="Comprar" onPress={hacerCompra} /></>
       )}
+      </View>
     </View>
   );
 };
@@ -51,19 +56,41 @@ const Carrito = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
+    //alignItems: "center",
+    //justifyContent: "center",
   },
-
   header: {
     fontSize: 24,
     marginBottom: 16,
     fontWeight: "700",
   },
-
-  section: {
-    marginBottom: 48,
+  total: {
+    color: "black",
+    padding: 10,
+    //borderRadius: 8,
+    //marginTop: 10,
+    //marginBottom: 5,
+    fontSize: 20,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    textAlign: "center",
   },
+  list: {
+    flex: 1,
+    backgroundColor: "white",
+  }, 
+  final: {
+    //alignItems: "center",
+    //justifyContent: "center",
+    backgroundColor: "white",
+  },
+  button: {
+    height: 20,
+    marginLeft: 10,
+    paddingRight: 10,
+  }
 });
 
 export default Carrito;

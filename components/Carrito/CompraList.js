@@ -7,6 +7,9 @@ const CompraList = props => {
     <FlatList
       styles={styles.listContainer}
       data={props.data}
+      ItemSeparatorComponent={() => {
+        return (<View style={{height:2, backgroundColor:'#F1C40F'}} />);
+      }}
       renderItem={producto => (
         <CustomCard style={styles.listItem} variant="carrito" data={producto} />
       )}
@@ -18,8 +21,8 @@ const CompraList = props => {
 
 const styles = StyleSheet.create({
   listContainer: {
-    // paddingHorizontal: 5,
-    // paddingVertical: 10,
+    //paddingHorizontal: 5,
+    //paddingVertical: 10,
   },
   listItem: {
     // width: "100%",
@@ -28,5 +31,3 @@ const styles = StyleSheet.create({
 });
 
 export default CompraList;
-
-//id, titulo, imagen, desc, precio, tipo

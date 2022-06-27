@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     marginHorizontal: "5%",
+    backgroundColor: "white",
   },
   title: {
     fontWeight: "bold",

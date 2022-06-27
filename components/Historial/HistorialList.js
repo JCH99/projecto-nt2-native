@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
+import { Button } from "../Buttons/Button";
 
 const HistorialList = props => {
   const context = useContext(CartContext);
@@ -17,6 +18,9 @@ const HistorialList = props => {
     <FlatList
       styles={styles.listContainer}
       data={products}
+      ItemSeparatorComponent={() => {
+        return (<View style={{height:2, backgroundColor:'#F1C40F'}} />);
+      }}
       renderItem={({ item }) => (
         <Card>
           <Card.Content>

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StyleSheet } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { Button } from "../Buttons/Button";
-import { useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
 
 // variant tienda -> imagen descripcion
@@ -24,14 +24,13 @@ const CustomCard = props => {
   const restar = () => {
     contexto.removeOne(_id);
   };
-  // console.log(props.data.item);
   return (
-    <Card>
+    <Card style={styles.card}>
       <Card.Title title={titulo} subtitle={subtitulo} />
       <Card.Content>
         {props.variant === "tienda" && (
           <>
-            <Card.Cover source={{ uri: imagen }} />
+            <Card.Cover style={styles.image} source={{ uri: imagen }} />
             <Paragraph>{descripcion}</Paragraph>
           </>
         )}
@@ -50,5 +49,14 @@ const CustomCard = props => {
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+  },
+  image: {
+    height: 180,
+    width: 180
+  }
+});
 
 export default CustomCard;
