@@ -17,7 +17,7 @@ const Carrito = ({ navigation }) => {
     const exito = await comprar({
       productos: context.items,
       _id: decoded._id,
-    });
+    }, token);
 
     if (exito) {
       context.reset();

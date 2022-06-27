@@ -4,15 +4,17 @@ import HistorialList from "../components/Historial/HistorialList";
 import { useState, useEffect, useContext } from "react";
 import getHistorial from "../services/historialApi";
 import { AuthContext } from "../context/AuthContext";
+import { useIsFocused } from '@react-navigation/native';
 
 export default function Historial({navigation}) {
   const token = useContext(AuthContext).token;
   const [compras, setCompras] = useState([]);
+  const isFocused = useIsFocused();
 
   useEffect(async () => {
     const list = await getHistorial(token);
     setCompras(list);
-  }, []);
+  }, [isFocused]);
 
   return (
     <View style={styles.container}>
@@ -24,7 +26,7 @@ export default function Historial({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //justifyContent: "space-around",
+    justifyContent: "space-around",
     alignItems: "center",
     marginHorizontal: "5%",
   },

@@ -12,7 +12,7 @@ export async function getProductos() {
   }
 }
 
-export async function comprar(carrito) {
+export async function comprar(carrito, token) {
   try {
     const url = `${API_HOST}/api/productos/comprar`;
     const response = await fetch(url, {
@@ -20,6 +20,7 @@ export async function comprar(carrito) {
       body: JSON.stringify(carrito),
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
     const result = await response.json();
