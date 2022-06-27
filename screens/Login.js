@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import { StyleSheet, View, Text, Alert, ActivityIndicator } from "react-native";
+import { StyleSheet, View, Text, Alert, ActivityIndicator, Image, ScrollView } from "react-native";
 import { Button } from "../components/Buttons/Button";
 import Input from "../components/Input";
 import { AuthContext } from "../context/AuthContext";
+import icon from "../assets/icon.png";
 
 export function LoginForm({ setIsLoading }) {
   const { signIn } = useContext(AuthContext);
@@ -20,7 +21,6 @@ export function LoginForm({ setIsLoading }) {
     try {
       setIsLoading(true);
       await signIn(email, password);
-      // setIsLoading(false);
     } catch (err) {
       Alert.alert(
         "Acceso inválido",
@@ -32,6 +32,7 @@ export function LoginForm({ setIsLoading }) {
   };
 
   return (
+    <ScrollView>
     <View style={styles.formContainer}>
       <Input
         placeholder="Correo electrónico"
@@ -52,6 +53,7 @@ export function LoginForm({ setIsLoading }) {
         inverted
       />
     </View>
+    </ScrollView>
   );
 }
 
@@ -66,7 +68,7 @@ export default function LoginScreen() {
         </View>
       ) : (
         <View style={styles.formView}>
-          <Text style={styles.title}>¡Bienvenido!</Text>
+          <Image style={styles.image} source={icon} />
           <LoginForm setIsLoading={setIsLoading} />
         </View>
       )}
@@ -83,7 +85,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: "10%",
   },
   formView: {
-    //marginBottom: 20,
     alignContent: "center",
   },
   title: {
@@ -93,4 +94,9 @@ const styles = StyleSheet.create({
     color: "#000",
     margin: 30,
   },
+  image: {
+    alignSelf: "center",
+    height: 230,
+    width: 230
+  }
 });

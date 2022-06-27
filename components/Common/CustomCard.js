@@ -26,22 +26,22 @@ const CustomCard = props => {
   };
   return (
     <Card style={styles.card}>
-      <Card.Title title={titulo} subtitle={subtitulo} />
-      <Card.Content>
+      <Card.Title titleStyle={styles.title} title={titulo} subtitle={subtitulo} />
+      <Card.Content style={styles.title}>
         {props.variant === "tienda" && (
           <>
             <Card.Cover style={styles.image} source={{ uri: imagen }} />
-            <Paragraph>{descripcion}</Paragraph>
+            <Paragraph style={styles.title}>{descripcion}</Paragraph>
           </>
         )}
         {props.variant === "carrito" && (
           <>
-            <Paragraph>{`${cantidad} X $${precio}`}</Paragraph>
-            <Paragraph>{`Total: $${cantidad * precio}`}</Paragraph>
+            <Paragraph style={styles.title}>{`${cantidad} X $${precio}`}</Paragraph>
+            <Paragraph style={styles.title}>{`Total: $${cantidad * precio}`}</Paragraph>
           </>
         )}
       </Card.Content>
-      <Card.Actions>
+      <Card.Actions style={styles.title}>
         {cantidad > 0 && <Button title="-" onPress={restar} />}
         <Button title={cantidad} />
         <Button title="+" onPress={agregar} />
@@ -53,7 +53,12 @@ const CustomCard = props => {
 const styles = StyleSheet.create({
   card: {
   },
+  title: {
+    alignSelf: "center"
+  },
   image: {
+    alignSelf: "center",
+    backgroundColor: "white",
     height: 180,
     width: 180
   }

@@ -82,12 +82,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   }, 
   final: {
-    //alignItems: "center",
-    //justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "white",
   },
   button: {
-    height: 20,
+    alignSelf: "center",
+    height: 30,
     marginLeft: 10,
     paddingRight: 10,
   }
